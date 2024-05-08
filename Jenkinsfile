@@ -14,11 +14,14 @@ pipeline {
             }
         }
 
-        stage('Composer Install') {
-            steps {
-                sh "composer install --no-interaction --no-progress --prefer-dist"
-            }
-        }
+       stages {
+           stage('Composer Install') {
+               steps {
+                   sh "composer install --no-interaction --no-progress --prefer-dist --ignore-platform-req=ext-dom --ignore-platform-req=ext-curl --ignore-platform-req=ext-xml"
+               }
+           }
+       }
+
 
         stage('Run Symfony Unit Tests') {
             steps {
