@@ -15,26 +15,17 @@ pipeline {
         }
 
 
-           stage('Composer Install') {
-               steps {
-                   sh "composer install --no-interaction --no-progress --prefer-dist --ignore-platform-req=ext-dom --ignore-platform-req=ext-curl --ignore-platform-req=ext-xml --ignore-platform-req=ext-xmlwriter"
-               }
-           }
-
-
-
-        stage('Run Symfony Unit Tests') {
-            steps {
-                sh "php bin/phpunit"
-            }
-        }
-
-        stage('Run Symfony Code Quality Check via SonarQube') {
-            steps {
-                      sh " mvn clean verify sonar:sonar -Dsonar.projectKey=BNA -Dsonar.projectName='BNA' -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.token=sqp_02d5e42e73eb7b1c470f0142d92e39d1b93351d8"
-
-            }
-        }
+          stage('Run Symfony Code Quality Check via SonarQube') {
+                     steps {
+                         // Execute sonar-scanner command for code quality analysis
+                         sh "sonar-scanner \
+                             -Dsonar.projectKey=BNA \
+                             -Dsonar.projectName='BNA' \
+                             -Dsonar.sources=src \
+                             -Dsonar.host.url=http://192.168.33.10:9000 \
+                             -Dsonar.login=sqp_02d5e42e73eb7b1c470f0142d92e39d1b93351d8"
+                     }
+                 }
 
         stage('Build Docker Image') {
             steps {
