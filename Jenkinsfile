@@ -17,7 +17,6 @@ pipeline {
 
           stage('Run Symfony Code Quality Check via SonarQube') {
                      steps {
-                         // Execute sonar-scanner command for code quality analysis
                          sh "sonar-scanner \
                              -Dsonar.projectKey=BNA \
                              -Dsonar.projectName='BNA' \
