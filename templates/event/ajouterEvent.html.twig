@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="page-header">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('consulter_event')}}">Evénements</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ajouter Evénement</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Ajouter un événement</h4>
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                    <form class="form-sample" method="post">
+                        <p class="card-description">  </p>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Nom</label>
+                                    <div class="col-sm-9">
+
+                                        {{ form_widget(form.nomEvenement, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Nom...'} }) }}
+                                        {{ form_errors(form.nomEvenement, { 'attr': {'class': 'mdi mdi-layers text-danger'
+                                            } }) }}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Date début</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.dateDebut, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Descript'} }) }}
+                                        {{ form_errors(form.dateDebut)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Description</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.description, { 'attr': {'class': 'form-control',
+                                        'placeholder' : 'Description...'} }) }}
+                                        {{ form_errors(form.description)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Date fin</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.dateFin, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Date fin...'} }) }}
+                                        {{ form_errors(form.dateFin)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Emplacement</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.emplacement, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'emplacement...'} }) }}
+                                        {{ form_errors(form.emplacement)}}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Organisateur</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.organisateur, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Image</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.image, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.prix, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Prix...'} }) }}
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Nbr max participant</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.nbrMaxParticipant, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.Save, { 'attr': {'class': 'nav-link btn btn-success create-new-button'} }) }}
+                                        {{ form_row(form._token) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+
+    <!-- partial -->
+
+{% endblock %}

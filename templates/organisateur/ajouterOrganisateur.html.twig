@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="page-header">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('consulter_organisateur')}}">Organisateur</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ajouter Organisateur</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Ajouter un Organisateur</h4>
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                    <form class="form-sample" method="post">
+                        <p class="card-description">  </p>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Nom</label>
+                                    <div class="col-sm-9">
+
+                                        {{ form_widget(form.nom, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Nom...'} }) }}
+                                        {{ form_errors(form.nom)}}
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Type</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.type, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'type..'} }) }}
+                                        {{ form_errors(form.type)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.emailOrganisateur, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Email...'} }) }}
+                                        {{ form_errors(form.emailOrganisateur)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label"> Num Tel</label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.numtelOrganisateur, { 'attr': {'class': 'form-control',
+                                            'placeholder' : 'Tel...'} }) }}
+                                        {{ form_errors(form.numtelOrganisateur)}}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+                                        {{ form_widget(form.Save, { 'attr': {'class': 'nav-link btn btn-success create-new-button'} }) }}
+                                        {{ form_row(form._token) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+
+    <!-- partial -->
+
+{% endblock %}

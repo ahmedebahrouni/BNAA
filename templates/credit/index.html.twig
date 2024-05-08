@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service Credit{% endblock %}
+
+{% block body %}
+    {% block contenpage %}
+
+
+
+        <h4 class="card-title">Admin</h4>
+        <p class="card-description"> Gestion des credits <code> </code>
+        </p>
+        <section class="s-crossfit">
+            <div class="container">
+
+
+
+
+                <div class="row" id="search">
+
+                </div>
+                <br><br><br><br>
+            </div>
+        </section>
+        <script src="{{ asset('assets/js/jquery.js') }}"></script>
+        <script
+                src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}">
+        </script>
+
+        <div class="table-responsive">
+            {% if Credit %}
+                <table id="Credit" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>RIB</th>
+                        <th>date credit</th>
+                        <th>Status compte</th>
+                        <th>Solde</th>
+                        <th>Montant demandé</th>
+                        <th>Salaire</th>
+                        <th>AMOR</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for Credit in Credit %}
+                        <tr>
+                            <td>{{ Credit.IdCredit }}</td>
+                            <td>{{ Credit.RIB }}</td>
+
+                            <td>{{ Credit.DateCredit }}</td>
+                            <td>{{ Credit.Statuscompte }}</td>
+                            <td>{{ Credit.Solde }}</td>
+                            <td>{{ Credit.Montant }}</td>
+                            <td>{{ Credit.salaire }}</td>
+
+                            <td>{{ Credit.AMOR }}</td>
+
+
+
+                            <td>
+
+                                <a href="{{ path('decision',{'id':Credit.IdCredit}) }}" class="badge badge-outline-success">Tester</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+            {% else %}
+                <p>Aucun Credit</p>
+            {% endif %}
+        </div>
+
+
+
+
+
+        <div style="float:right;">
+
+        </div>
+    {% endblock %}
+{% endblock %}
