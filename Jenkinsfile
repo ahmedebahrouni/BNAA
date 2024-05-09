@@ -14,34 +14,31 @@ pipeline {
             }
         }
 
+ stage('Build Docker Image') {
+                      steps {
+                          script {
+                            sh 'docker build -t ahmed1919/pfe:first .'
+                          }
+                      }
+                  }
 
-          stage('Run Symfony Code Quality Check via SonarQube') {
-                     steps {
-                         sh "sonar-scanner \
-                             -Dsonar.projectKey=BNA \
-                             -Dsonar.projectName='BNA' \
-                             -Dsonar.sources=src \
-                             -Dsonar.host.url=http://192.168.33.10:9000 \
-                             -Dsonar.login=sqp_02d5e42e73eb7b1c470f0142d92e39d1b93351d8"
-                     }
-                 }
+                  stage('login dockerhub') {
+                                        steps {
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh 'docker build -t yourusername/your-symfony-app .'
-                }
-            }
-        }
+				sh 'docker login -u ahmed1919 --password dckr_pat_YhUHa7uRtFGtL91LFwJ6nb0Mpgw'
+                                            }
+		  }
 
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    sh 'docker login -u yourusername --password yourdockerhubpassword'
-                    sh 'docker push yourusername/your-symfony-app'
-                }
-            }
-        }
+	                      stage('Push Docker Image') {
+                                        steps {
+                                   sh 'docker push ahmed1919/pfe:first'
+                                            }
+		  }
+
+
+
+
+
     }
 
     post {
