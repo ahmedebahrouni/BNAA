@@ -1,0 +1,93 @@
+{# templates/pdf/user_list.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Clients bancaires</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #dc3545;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Liste des Clients bancaires</h1>
+    {% if User %}
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Rôle</th>
+                <th>Salaire</th>
+                <th>Numéro de téléphone</th>
+                <th>Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for User in User %}
+                <tr>
+                    <td>{{ User.idUser }}</td>
+                    <td>{{ User.nom }}</td>
+                    <td>{{ User.prenom }}</td>
+                    <td>{{ User.email }}</td>
+                    <td>{{ User.role }}</td>
+                    <td>{{ User.salaire }}</td>
+                    <td>{{ User.numtelUser }}</td>
+                    <td>{{ User.adresseUser }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-data">Aucun utilisateur trouvé.</p>
+    {% endif %}
+</div>
+</body>
+</html>

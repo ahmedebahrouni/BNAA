@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div id="calendrier" ></div>
+    <style>
+        .fc-daygrid-day-number {
+            color: blackcomposer;
+        }
+.fc-col-header-cell-cushion{
+    color: black;
+}
+.fc-prev-button{
+            background: rgb(195,195,195);
+        }
+        .fc-view-harness{
+            background:rgb(195,195,195);
+        }
+
+    </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.css" integrity="sha256-RCJT6YvohmGy+rWQe3hpPZez8iaPnirFVfiwaBVCk1k=" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.js" integrity="sha256-6l5QOXZ6Mkg+2tOaJgs8yT7xx2WapaIPQl7qpB55/V0=" crossorigin="anonymous"></script>
+<script>
+    window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+        let calendar = new FullCalendar.Calendar(calendarElt,{
+            intitialView: 'dayGridMonth',
+
+            locale: 'fr',
+            timeZone: 'afrique/tunisie',
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            events: {{data |raw}},
+            editable: true,
+            eventResizableFromStart: true
+
+        })
+        calendar.on('eventChange', (e) => {
+
+            let url = `/event/editFull/${e.event.id}`
+            let donnees = {
+                "title": e.event.title,
+                "decription": e.event.extendedProps.description,
+                "start": e.event.start,
+                "end": e.event.end,
+                "backgroundColor": e.event.backgroundColor
+            }
+            let xhr = new XMLHttpRequest
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
+        })
+
+        calendar.render()
+    }
+</script>
+{% endblock %}

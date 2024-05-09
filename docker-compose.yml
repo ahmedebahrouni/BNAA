@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql:8.1.0
+    container_name: mysqldb
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: powerdevopsa
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    networks:
+      - my-network
+    restart: always
+
+  #backendapp
+
+  app_achat_backend:
+    container_name: back
+    image: ahmed1919/pfe:first
+    ports:
+      - "8087:8087"
+    depends_on:
+      - mysqldb
+    environment:
+
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/ahmed?&createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+
+      SPRING_DATASOURCE_USERNAME: root
+
+      SPRING_DATASOURCE_PASSWORD:
+
+    networks:
+
+      - my-network
+
+    volumes:
+
+      - ./backend-data:/app/data
+
+    restart: always
+
+
+    stdin_open: true
+    tty: true
+
+networks:
+
+  my-network:
+
+
+#dockercomposechanges

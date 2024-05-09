@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Bna Bank</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="eSports Team &amp; Gaming HTML Template">
+    <meta name="author" content="Dan Fisher">
+    <meta name="keywords" content="BNA">
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="front_office/assets/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="front_office/assets/img/favicons/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="front_office/assets/img/favicons/favicon-152.png">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Google Web Fonts
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700" rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Vendor CSS -->
+    <link href="front_office/assets/vendor/magnific-popup/css/magnific-popup.css" rel="stylesheet">
+    <link href="front_office/assets/vendor/slick/css/slick.css" rel="stylesheet">
+    <link href="front_office/assets/vendor/nanoscroller/css/nanoscroller.css" rel="stylesheet">
+    <link href="front_office/assets/vendor/fontawesome/css/brands.css" rel="stylesheet">
+
+    <!-- Template CSS-->
+    <link href="front_office/assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS-->
+    <link href="front_office/assets/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body class="preloader-is--active ">
+
+<div class="site-wrapper site-layout--default">
+
+    <!-- Header
+    ================================================== -->
+    <header id="header" class="site-header site-header--bottom">
+
+        <!-- Logo - Image Based -->
+        <div class="header-logo header-logo--img">
+            <a href="front"><img src="front_office/assets/img/logo.png" srcset="front_office/assets/img/logo@2x.png 2x" alt="Necromancers"></a>
+        </div>
+        <!-- Logo - Image Based / End -->
+
+
+        <!-- Main Navigation -->
+
+        <!-- Main Navigation / End -->
+
+        <!-- Header Actions -->
+
+        <!-- Header Actions / End -->
+    </header>
+    <!-- Header / End -->
+
+    <!-- Content
+    ================================================== -->
+
+
+
+    {% block body %}
+        {% for flashError in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+        {% endfor %}
+
+
+        {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Enter your email address and we will send you a
+                link to reset your password.
+            </small>
+        </div>
+
+        <button class="btn btn-primary">Send password reset email</button>
+        {{ form_end(requestForm) }}
+    {% endblock %}
+
+
+
+
+
+
+    <!-- Overlay -->
+
+    <!-- Overlay / End -->
+
+    <!-- Cart Panel -->
+
+    <!-- Search Panel / End -->
+    <!-- Menu Panel -->
+
+    <!-- Menu Panel / End -->
+
+</div>
+
+<div class="preloader-overlay">
+    <div id="js-preloader" class="preloader">
+        <div class="preloader-inner fadeInUp">
+            <div class="pong-loader"></div>
+            <svg role="img" class="df-icon df-icon--preloader-arcade">
+                <use xlink:href="front_office/assets/img/necromancers.svg#preloader-arcade"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- The cursor elements -->
+<div class="df-custom-cursor-wrap">
+    <div id="df-custom-cursor"></div>
+</div>
+
+<!-- Javascript Files
+================================================== -->
+<!-- Core JS -->
+<script src="front_office/assets/vendor/jquery/jquery.min.js"></script>
+<script src="front_office/assets/vendor/jquery/jquery-migrate.min.js"></script>
+<script src="front_office/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="front_office/assets/js/core.js"></script>
+
+<!-- Vendor JS -->
+
+<!-- Template JS -->
+<script src="front_office/assets/js/init.js"></script>
+<script src="front_office/assets/js/custom.js"></script>
+
+<!-- Duotone SVG color filter -->
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-filters">
+    <filter id="duotone_base">
+        <feColorMatrix type="matrix" result="grayscale"
+                       values="1 0 0 0 0
+								1 0 0 0 0
+								1 0 0 0 0
+								0 0 0 1 0" />
+        <feComponentTransfer color-interpolation-filters="sRGB" result="duotone_base_filter">
+            <feFuncR type="table" tableValues="0.082352941176471 0.419607843137255"></feFuncR>
+            <feFuncG type="table" tableValues="0.090196078431373 0.443137254901961"></feFuncG>
+            <feFuncB type="table" tableValues="0.125490196078431 0.6"></feFuncB>
+            <feFuncA type="table" tableValues="0 1"></feFuncA>
+        </feComponentTransfer>
+    </filter>
+</svg>
+
+</body>
+
+</html>
+
+

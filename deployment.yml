@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Deployment-symfony-app
+spec:
+  selector:
+    matchLabels:
+      app: symfony-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: symfony-app
+    spec:
+      containers:
+        - name: symfony-container
+          image: ahmed1919/pfe:first
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8089 # Assuming your Symfony app listens on port 80
