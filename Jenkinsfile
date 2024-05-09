@@ -37,32 +37,9 @@ pipeline {
 
 
 
-<<<<<<< HEAD
- stage('Build Docker Image') {
-                      steps {
-                          script {
-                            sh 'docker build -t ahmed1919/pfe:first .'
-                          }
-                      }
-                  }
-
-                  stage('login dockerhub') {
-                                        steps {
-
-                   sh 'docker login -u ahmed1919 --password dckr_pat_wRsBljrIeVpG1l8CBB5TxXBXKqA'
-                                            }
-		  }
-
-	                      stage('Push Docker Image') {
-                                        steps {
-                                   sh 'docker push ahmed1919/pfe:first'
-                                            }
-		  }
 
 
 
-=======
->>>>>>> 4c46503ead20e1bcd64ff87fdcc804ffb155f50b
 
 
     }
